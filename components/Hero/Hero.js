@@ -1,0 +1,51 @@
+import React from 'react';
+import {
+  ImageBackground,
+  Text,
+  TouchableOpacity,
+  TouchableHighlight,
+} from 'react-native';
+import styled from 'styled-components';
+import hero from './../../assets/hero/home.jpg';
+import {COLORS} from './../../styles/variables';
+
+function onPress() {
+  console.log('aha');
+}
+
+const StyledImageBackground = styled(ImageBackground)`
+  width: 100%;
+  height: 200px;
+  padding: 20px;
+  flex: 1;
+  justify-content: flex-end;
+`;
+
+const StyledText = styled(Text)`
+  color: white;
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 12px;
+`;
+
+const Button = styled(Text)`
+  background-color: ${COLORS.primary};
+  font-weight: bold;
+  padding: 10px;
+  color: white;
+  text-align: center;
+  text-transform: uppercase;
+  font-size: 18px;
+  
+`;
+
+const Hero = () => (
+  <StyledImageBackground source={hero}>
+    <StyledText>Nie masz pomysłu na obiad?</StyledText>
+    <TouchableOpacity onPress={onPress} activeOpacity={0.5}>
+      <Button>Znajdź go!</Button>
+    </TouchableOpacity>
+  </StyledImageBackground>
+);
+
+export default Hero;
