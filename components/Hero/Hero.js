@@ -3,11 +3,13 @@ import {
   ImageBackground,
   Text,
   TouchableOpacity,
-  TouchableHighlight,
+  Dimensions,
 } from 'react-native';
 import styled from 'styled-components';
 import hero from './../../assets/hero/home.jpg';
 import {COLORS} from './../../styles/variables';
+
+const height = Dimensions.get('window').height;
 
 function onPress() {
   console.log('aha');
@@ -15,7 +17,7 @@ function onPress() {
 
 const StyledImageBackground = styled(ImageBackground)`
   width: 100%;
-  height: 200px;
+  height: ${height / 2}px;
   padding: 20px;
   flex: 1;
   justify-content: flex-end;
@@ -23,7 +25,7 @@ const StyledImageBackground = styled(ImageBackground)`
 
 const StyledText = styled(Text)`
   color: white;
-  font-size: 20px;
+  font-size: 28px;
   font-weight: bold;
   margin-bottom: 12px;
 `;
@@ -35,8 +37,7 @@ const Button = styled(Text)`
   color: white;
   text-align: center;
   text-transform: uppercase;
-  font-size: 18px;
-  
+  font-size: 24px;
 `;
 
 const Hero = () => (

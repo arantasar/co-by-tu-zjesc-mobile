@@ -1,35 +1,26 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- * @flow strict-local
- */
-
 import React from 'react';
-
-import {
-  SafeAreaView,
-  StyleSheet,
-  ScrollView,
-  View,
-  Text,
-  StatusBar,
-} from 'react-native';
+import styled from 'styled-components';
+import {SafeAreaView, ScrollView, Text} from 'react-native';
 import Hero from './components/Hero/Hero';
+import RecentRecipes from './components/RecentRecipes/RecentRecipes';
 
-const App = () => {
-  return (
-    <>
-      <StatusBar barStyle="dark-content" />
-      <SafeAreaView>
-        <ScrollView contentInsetAdjustmentBehavior="automatic">
-          <Hero />
-        </ScrollView>
-        <Text>Bottom nav</Text>
-      </SafeAreaView>
-    </>
-  );
-};
+const App = () => (
+  <Application>
+    <StyledScrollView>
+      <Hero />
+      <RecentRecipes />
+      <Text>Najpopularniejsze przepisy</Text>
+    </StyledScrollView>
+    <Text>Bottom nav</Text>
+  </Application>
+);
 
 export default App;
+
+const StyledScrollView = styled(ScrollView)`
+  flex: 1;
+`;
+
+const Application = styled(SafeAreaView)`
+  flex: 1;
+`;
