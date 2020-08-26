@@ -23,11 +23,11 @@ const listStyle = {
   paddingLeft: 20,
 };
 
-const RecentRecipes = () => {
+const BestRecipes = () => {
   return (
     <>
       <Wrapper>
-        <Header>Najnowsze przepisy!</Header>
+        <Header>Najpopularniejsze przepisy!</Header>
         <Link>Zobacz więcej &gt;</Link>
       </Wrapper>
       <FlatList
@@ -41,7 +41,7 @@ const RecentRecipes = () => {
   );
 };
 
-export default RecentRecipes;
+export default BestRecipes;
 
 const Header = styled(Text)`
   font-weight: bold;

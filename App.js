@@ -3,13 +3,14 @@ import styled from 'styled-components';
 import {SafeAreaView, ScrollView, Text} from 'react-native';
 import Hero from './components/Hero/Hero';
 import RecentRecipes from './components/RecentRecipes/RecentRecipes';
+import BestRecipes from './components/BestRecipes/BestRecipes';
 
 const App = () => (
   <Application>
     <StyledScrollView>
       <Hero />
       <RecentRecipes />
-      <Text>Najpopularniejsze przepisy</Text>
+      <BestRecipes />
     </StyledScrollView>
     <Text>Bottom nav</Text>
   </Application>
