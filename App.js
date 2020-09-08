@@ -1,26 +1,42 @@
+import 'react-native-gesture-handler';
 import React from 'react';
 import styled from 'styled-components';
-import {SafeAreaView, ScrollView, Text} from 'react-native';
-import Hero from './components/Hero/Hero';
-import RecentRecipes from './components/RecentRecipes/RecentRecipes';
-import BestRecipes from './components/BestRecipes/BestRecipes';
+import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
+import {SafeAreaView, Text} from 'react-native';
+import {NavigationContainer} from '@react-navigation/native';
+import Home from './views/Home/Home';
+import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
+import {faCoffee} from '@fortawesome/free-solid-svg-icons';
+
+const Tab = createBottomTabNavigator();
+
+const screenOptions = ({route}) => ({
+  tabBarIcon: ({focused, color, size}) => {
+    let icon;
+    switch (route.name) {
+      case 'Odkrywaj':
+        icon = 'faCoffee';
+        break;
+    }
+
+    return <FontAwesomeIcon icon={faCoffee} />;
+  },
+});
 
 const App = () => (
-  <Application>
-    <StyledScrollView>
-      <Hero />
-      <RecentRecipes />
-      <BestRecipes />
-    </StyledScrollView>
-    <Text>Bottom nav</Text>
-  </Application>
+  <NavigationContainer>
+    <Application>
+      <Tab.Navigator screenOptions={screenOptions}>
+        <Tab.Screen name="Odkrywaj" component={Home} />
+        <Tab.Screen name="Szukaj" component={Home} />
+        <Tab.Screen name="Moje przepisy" component={Home} />
+        <Tab.Screen name="Mój tydzień" component={Home} />
+      </Tab.Navigator>
+    </Application>
+  </NavigationContainer>
 );
 
 export default App;
-
-const StyledScrollView = styled(ScrollView)`
-  flex: 1;
-`;
 
 const Application = styled(SafeAreaView)`
   flex: 1;
