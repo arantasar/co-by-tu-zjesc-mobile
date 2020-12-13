@@ -72,6 +72,7 @@ const Login = () => {
               <Error>{errors.email}</Error>
             ) : null}
             <StyledInput
+              secureTextEntry
               placeholder={'Hasło'}
               value={values.password}
               onChangeText={handleChange('password')}
