@@ -1,12 +1,15 @@
 import 'react-native-gesture-handler';
-import React from 'react';
+import React, {useContext} from 'react';
 import styled from 'styled-components';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {SafeAreaView, Text} from 'react-native';
 import {NavigationContainer} from '@react-navigation/native';
 import Home from './views/Home/Home';
+import Login from './views/Login/Login';
 import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
 import {faCoffee} from '@fortawesome/free-solid-svg-icons';
+import UserContextProvider from './context/UserContextProvider';
+import userContext from './context/UserContext';
 
 const Tab = createBottomTabNavigator();
 
@@ -23,18 +26,28 @@ const screenOptions = ({route}) => ({
   },
 });
 
-const App = () => (
-  <NavigationContainer>
-    <Application>
-      <Tab.Navigator screenOptions={screenOptions}>
-        <Tab.Screen name="Odkrywaj" component={Home} />
-        <Tab.Screen name="Szukaj" component={Home} />
-        <Tab.Screen name="Moje przepisy" component={Home} />
-        <Tab.Screen name="Mój tydzień" component={Home} />
-      </Tab.Navigator>
-    </Application>
-  </NavigationContainer>
-);
+const App = () => {
+  const ctx = useContext(userContext);
+
+  return (
+    <NavigationContainer>
+      <Application>
+        <UserContextProvider>
+          <Tab.Navigator screenOptions={screenOptions}>
+            <Tab.Screen name="Odkrywaj" component={Home} />
+            <Tab.Screen name="Szukaj" component={Home} />
+            {ctx.isUserLogged ? (
+              <Tab.Screen name="Mój profil" component={Home} />
+            ) : (
+              <Tab.Screen name="Zaloguj" component={Login} />
+            )}
+            <Tab.Screen name="Mój tydzień" component={Home} />
+          </Tab.Navigator>
+        </UserContextProvider>
+      </Application>
+    </NavigationContainer>
+  );
+};
 
 export default App;
 
