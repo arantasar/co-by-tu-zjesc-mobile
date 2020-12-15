@@ -18,7 +18,6 @@ import {initialValues} from './initialValues';
 import {useNavigation} from '@react-navigation/native';
 
 const Register = () => {
-  const ctx = useContext(userContext);
   const navigation = useNavigation();
 
   const goToLogin = () => navigation.navigate('login');
@@ -29,7 +28,9 @@ const Register = () => {
       axios
         .post(`${URL_BASE}/api/users`, {email, password, name})
         .then((res) => {
-          console.log(res.data);
+          Alert.alert('Konto utworzone', 'Możesz się zalogować', [
+            {text: 'OK', onPress: () => navigation.navigate('login')},
+          ]);
         })
         .catch(function (error) {
           const errResponse =
