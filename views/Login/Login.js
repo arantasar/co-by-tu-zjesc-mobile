@@ -7,7 +7,6 @@ import {
   TextInput,
   TouchableOpacity,
   Alert,
-  StyleSheet,
 } from 'react-native';
 import userContext from '../../context/UserContext';
 import {COLORS} from '../../styles/variables';
@@ -16,19 +15,14 @@ import {URL_BASE} from './../../config/config';
 import {Formik} from 'formik';
 import {validationSchema} from './validationSchema';
 import {initialValues} from './initialValues';
+import {useNavigation} from '@react-navigation/native';
 
 const Login = () => {
   const ctx = useContext(userContext);
+  const navigation = useNavigation();
 
-  const styles = StyleSheet.create({
-    contentContainer: {
-      backgroundColor: COLORS.primary,
-      flex: 1,
-      justifyContent: 'center',
-      alignItems: 'center',
-      width: '100%',
-    },
-  });
+  const goToRegister = () => navigation.navigate('register');
+  const contentContainerStyle = {flexGrow: 1, justifyContent: 'center'};
 
   const loginHandler = ({email, password}) => {
     if (email && password) {
@@ -52,8 +46,8 @@ const Login = () => {
 
   return (
     <ScrollView
-      centerContent={true}
-      contentContainerStyle={styles.contentContainer}>
+      contentContainerStyle={contentContainerStyle}
+      endFillColor={COLORS.primary}>
       <Formik
         initialValues={initialValues}
         validationSchema={validationSchema}
@@ -86,8 +80,11 @@ const Login = () => {
           </StyledView>
         )}
       </Formik>
-
-      <StyledText>Nie masz konta? Zarestruj się!</StyledText>
+      <StyledView>
+        <StyledText>
+          Nie masz konta? <Text onPress={goToRegister}>Zarestruj się!</Text>
+        </StyledText>
+      </StyledView>
     </ScrollView>
   );
 };

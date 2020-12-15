@@ -5,11 +5,11 @@ import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {SafeAreaView, Text} from 'react-native';
 import {NavigationContainer} from '@react-navigation/native';
 import Home from './views/Home/Home';
-import Login from './views/Login/Login';
 import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
 import {faCoffee} from '@fortawesome/free-solid-svg-icons';
 import UserContextProvider from './context/UserContextProvider';
 import userContext from './context/UserContext';
+import UserNavigation from './navigation/UserNavigation';
 
 const Tab = createBottomTabNavigator();
 
@@ -39,7 +39,7 @@ const App = () => {
             {ctx.isUserLogged ? (
               <Tab.Screen name="Mój profil" component={Home} />
             ) : (
-              <Tab.Screen name="Zaloguj" component={Login} />
+              <Tab.Screen name="Zaloguj" component={UserNavigation} />
             )}
             <Tab.Screen name="Mój tydzień" component={Home} />
           </Tab.Navigator>
