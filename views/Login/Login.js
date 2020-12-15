@@ -30,8 +30,9 @@ const Login = () => {
         .post(`${URL_BASE}/api/users/login`, {email, password})
         .then((res) => {
           const {user, token} = res.data;
-          ctx.setUser(user);
-          ctx.setToken(token);
+          ctx.login(user, token);
+          navigation.navigate('home');
+          console.log(ctx.isUserLogged);
         })
         .catch(function (error) {
           const errResponse =

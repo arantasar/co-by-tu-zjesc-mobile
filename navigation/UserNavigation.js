@@ -1,21 +1,15 @@
 import React from 'react';
 import {createStackNavigator} from '@react-navigation/stack';
-import Login from './../views/Login/Login';
-import Register from './../views/Register/Register';
+import Panel from '../views/Panel/Panel';
 
 const Stack = createStackNavigator();
 
 const UserNavigation = () => (
   <Stack.Navigator>
     <Stack.Screen
-      name="login"
-      component={Login}
-      options={{title: 'Logowanie'}}
-    />
-    <Stack.Screen
-      name="register"
-      component={Register}
-      options={{title: 'Rejestracja'}}
+      name="panel"
+      component={Panel}
+      options={{title: 'Mój profil'}}
     />
   </Stack.Navigator>
 );
