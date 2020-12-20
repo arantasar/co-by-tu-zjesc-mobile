@@ -1,10 +1,11 @@
 import React from 'react';
 import {ScrollView, View, Text} from 'react-native';
+import Profile from './Profile';
 
 const Panel = () => (
   <ScrollView>
     <View>
-      <Text>Twój profil</Text>
+      <Profile />
       <Text>Moje przepisy</Text>
       <Text>Dodaj przepis</Text>
       <Text>Ulubione</Text>
