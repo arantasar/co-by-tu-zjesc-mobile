@@ -16,10 +16,10 @@ const Panel = () => {
   };
 
   const links = [
-    {text: 'Moje przepisy', to: 'home'},
-    {text: 'Dodaj przepis', to: 'home'},
-    {text: 'Ulubione', to: 'home'},
-    {text: 'Edytuj', to: 'home'},
+    {text: 'Moje przepisy', to: 'userRecipes'},
+    {text: 'Dodaj przepis', to: 'addRecipe'},
+    {text: 'Ulubione', to: 'favourites'},
+    {text: 'Edytuj', to: 'editProfile'},
     {text: 'Wyloguj się', handler: logoutHandler},
   ];
 
