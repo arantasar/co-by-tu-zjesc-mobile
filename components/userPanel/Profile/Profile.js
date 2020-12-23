@@ -1,9 +1,9 @@
 import React, {useContext} from 'react';
-import UserContext from './../../context/UserContext';
+import UserContext from '../../../context/UserContext';
 import {View, Text, Image} from 'react-native';
 import styled from 'styled-components';
-import {COLORS} from '../../styles/variables';
-import userDefault from './../../assets/userDefault.png';
+import {COLORS} from '../../../styles/variables';
+import userDefault from './../../../assets/userDefault.png';
 
 const Profile = () => {
   const {user} = useContext(UserContext);

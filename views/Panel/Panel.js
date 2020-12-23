@@ -2,7 +2,7 @@ import React, {useContext} from 'react';
 import {useNavigation} from '@react-navigation/native';
 import {ScrollView, Image, View, Text, ImageBackground} from 'react-native';
 import userContext from '../../context/UserContext';
-import Profile from './Profile';
+import Profile from '../../components/userPanel/Profile/Profile';
 import background from './../../assets/backgrounds/kola5b.png';
 import styled from 'styled-components';
 import GlassLink from '../../components/userPanel/GlassLink/GlassLink';
