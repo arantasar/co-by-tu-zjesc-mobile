@@ -10,7 +10,7 @@ import {
 } from 'react-native';
 import userContext from '../../context/UserContext';
 import {COLORS} from '../../styles/variables';
-import axios from 'axios';
+import axios from './../../axios';
 import {URL_BASE} from './../../config/config';
 import {Formik} from 'formik';
 import {validationSchema} from './validationSchema';
@@ -27,7 +27,7 @@ const Login = () => {
   const loginHandler = ({email, password}) => {
     if (email && password) {
       axios
-        .post(`${URL_BASE}/api/users/login`, {email, password})
+        .post('/api/users/login', {email, password})
         .then((res) => {
           const {user, token} = res.data;
           ctx.login(user, token);

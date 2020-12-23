@@ -10,7 +10,7 @@ import {
 } from 'react-native';
 import userContext from '../../context/UserContext';
 import {COLORS} from '../../styles/variables';
-import axios from 'axios';
+import axios from './../../axios';
 import {URL_BASE} from './../../config/config';
 import {Formik} from 'formik';
 import {validationSchema} from './validationSchema';
@@ -26,7 +26,7 @@ const Register = () => {
   const registerHandler = ({email, password, name}) => {
     if (email && password) {
       axios
-        .post(`${URL_BASE}/api/users`, {email, password, name})
+        .post('/api/users', {email, password, name})
         .then((res) => {
           Alert.alert('Konto utworzone', 'Możesz się zalogować', [
             {text: 'OK', onPress: () => navigation.navigate('login')},
