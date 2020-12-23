@@ -11,11 +11,11 @@ import {
 import userContext from '../../context/UserContext';
 import {COLORS} from '../../styles/variables';
 import axios from './../../axios';
-import {URL_BASE} from './../../config/config';
 import {Formik} from 'formik';
 import {validationSchema} from './validationSchema';
 import {initialValues} from './initialValues';
 import {useNavigation} from '@react-navigation/native';
+import {errorHandler} from '../../common/errorHandler';
 
 const Login = () => {
   const ctx = useContext(userContext);
@@ -34,14 +34,7 @@ const Login = () => {
           navigation.navigate('home');
           console.log(ctx.isUserLogged);
         })
-        .catch(function (error) {
-          const errResponse =
-            (error.response &&
-              error.response.data &&
-              error.response.data.message) ||
-            error.message;
-          Alert.alert('Błąd', errResponse);
-        });
+        .catch(errorHandler);
     }
   };
 

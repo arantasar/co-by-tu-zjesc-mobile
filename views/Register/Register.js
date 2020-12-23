@@ -1,4 +1,4 @@
-import React, {useContext} from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import {
   Text,
@@ -8,14 +8,13 @@ import {
   TouchableOpacity,
   Alert,
 } from 'react-native';
-import userContext from '../../context/UserContext';
 import {COLORS} from '../../styles/variables';
 import axios from './../../axios';
-import {URL_BASE} from './../../config/config';
 import {Formik} from 'formik';
 import {validationSchema} from './validationSchema';
 import {initialValues} from './initialValues';
 import {useNavigation} from '@react-navigation/native';
+import {errorHandler} from '../../common/errorHandler';
 
 const Register = () => {
   const navigation = useNavigation();
@@ -32,14 +31,7 @@ const Register = () => {
             {text: 'OK', onPress: () => navigation.navigate('login')},
           ]);
         })
-        .catch(function (error) {
-          const errResponse =
-            (error.response &&
-              error.response.data &&
-              error.response.data.message) ||
-            error.message;
-          Alert.alert('Błąd', errResponse);
-        });
+        .catch(errorHandler);
     }
   };
 
