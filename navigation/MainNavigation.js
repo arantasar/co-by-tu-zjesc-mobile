@@ -4,7 +4,12 @@ import userContext from './../context/UserContext';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import Home from '../views/Home/Home';
 import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
-import {faCoffee} from '@fortawesome/free-solid-svg-icons';
+import {
+  faCalendarWeek,
+  faUser,
+  faPizzaSlice,
+  faSearch,
+} from '@fortawesome/free-solid-svg-icons';
 import LoginNavigation from './LoginNavigation';
 
 const Tab = createBottomTabNavigator();
@@ -13,12 +18,22 @@ const screenOptions = ({route}) => ({
   tabBarIcon: ({focused, color, size}) => {
     let icon;
     switch (route.name) {
-      case 'Odkrywaj':
-        icon = 'faCoffee';
+      case 'home':
+        icon = faPizzaSlice;
+        break;
+      case 'profile':
+      case 'login':
+        icon = faUser;
+        break;
+      case 'search':
+        icon = faSearch;
+        break;
+      case 'week':
+        icon = faCalendarWeek;
         break;
     }
 
-    return <FontAwesomeIcon icon={faCoffee} />;
+    return <FontAwesomeIcon icon={icon} />;
   },
 });
 
@@ -28,13 +43,25 @@ const MainNavigation = () => {
   return (
     <Tab.Navigator screenOptions={screenOptions}>
       <Tab.Screen name="home" component={Home} options={{title: 'Odkrywaj'}} />
-      <Tab.Screen name="Szukaj" component={Home} />
+      <Tab.Screen name="search" component={Home} options={{title: 'Szukaj'}} />
       {ctx.isUserLogged ? (
-        <Tab.Screen name="Mój profil" component={UserNavigation} />
+        <Tab.Screen
+          name="profile"
+          component={UserNavigation}
+          options={{title: 'Mój profil'}}
+        />
       ) : (
-        <Tab.Screen name="Zaloguj" component={LoginNavigation} />
+        <Tab.Screen
+          name="login"
+          component={LoginNavigation}
+          options={{title: 'Zaloguj'}}
+        />
       )}
-      <Tab.Screen name="Mój tydzień" component={Home} />
+      <Tab.Screen
+        name="week"
+        component={Home}
+        options={{title: 'Mój tydzień'}}
+      />
     </Tab.Navigator>
   );
 };
