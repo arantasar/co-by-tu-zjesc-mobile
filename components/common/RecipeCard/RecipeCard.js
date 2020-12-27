@@ -1,22 +1,30 @@
+import {useNavigation} from '@react-navigation/native';
 import React from 'react';
 import {Text, View, Image} from 'react-native';
 import {TouchableOpacity} from 'react-native-gesture-handler';
 import styled from 'styled-components';
 import Stats from './Stats/Stats';
 
-const RecipeCard = ({recipe}) => (
-  <StyledView>
-    <RecipeName>{recipe.name}</RecipeName>
-    <RecipeDetails>
-      <StyledImage
-        source={{
-          uri: 'https://picsum.photos/100',
-        }}
-      />
-      <Stats {...recipe} />
-    </RecipeDetails>
-  </StyledView>
-);
+const RecipeCard = ({recipe}) => {
+  const nav = useNavigation();
+
+  return (
+    <StyledView
+      onPress={() =>
+        nav.navigate('recipe', {name: recipe.name, id: recipe.id})
+      }>
+      <RecipeName>{recipe.name}</RecipeName>
+      <RecipeDetails>
+        <StyledImage
+          source={{
+            uri: 'https://picsum.photos/100',
+          }}
+        />
+        <Stats {...recipe} />
+      </RecipeDetails>
+    </StyledView>
+  );
+};
 
 export default RecipeCard;
 

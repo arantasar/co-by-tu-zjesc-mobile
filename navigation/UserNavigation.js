@@ -5,6 +5,7 @@ import UserRecipes from '../views/UserRecipes/UserRecipes';
 import AddRecipe from '../views/AddRecipe/AddRecipe';
 import Favourites from '../views/Favourites/Favourites';
 import EditProfile from '../views/EditProfile/EditProfile';
+import Recipe from '../views/Recipe/Recipe';
 
 const Stack = createStackNavigator();
 
@@ -34,6 +35,11 @@ const UserNavigation = () => (
       name="editProfile"
       component={EditProfile}
       options={{title: 'Edytuj'}}
+    />
+    <Stack.Screen
+      name="recipe"
+      component={Recipe}
+      options={({route}) => ({title: route.params.name})}
     />
   </Stack.Navigator>
 );
