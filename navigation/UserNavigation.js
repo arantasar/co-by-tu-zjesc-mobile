@@ -5,43 +5,43 @@ import UserRecipes from '../views/UserRecipes/UserRecipes';
 import AddRecipe from '../views/AddRecipe/AddRecipe';
 import Favourites from '../views/Favourites/Favourites';
 import EditProfile from '../views/EditProfile/EditProfile';
-import Recipe from '../views/Recipe/Recipe';
+import CommonNavigation from './CommonNavigation';
 
 const Stack = createStackNavigator();
 
-const UserNavigation = () => (
-  <Stack.Navigator>
-    <Stack.Screen
-      name="panel"
-      component={Panel}
-      options={{title: 'Mój profil'}}
-    />
-    <Stack.Screen
-      name="userRecipes"
-      component={UserRecipes}
-      options={{title: 'Moje przepisy'}}
-    />
-    <Stack.Screen
-      name="addRecipe"
-      component={AddRecipe}
-      options={{title: 'Dodaj przepis'}}
-    />
-    <Stack.Screen
-      name="favourites"
-      component={Favourites}
-      options={{title: 'Ulubione'}}
-    />
-    <Stack.Screen
-      name="editProfile"
-      component={EditProfile}
-      options={{title: 'Edytuj'}}
-    />
-    <Stack.Screen
-      name="recipe"
-      component={Recipe}
-      options={({route}) => ({title: route.params.name})}
-    />
-  </Stack.Navigator>
-);
+const UserNavigation = () => {
+  const common = CommonNavigation(Stack);
+
+  return (
+    <Stack.Navigator>
+      <Stack.Screen
+        name="panel"
+        component={Panel}
+        options={{title: 'Mój profil'}}
+      />
+      <Stack.Screen
+        name="userRecipes"
+        component={UserRecipes}
+        options={{title: 'Moje przepisy'}}
+      />
+      <Stack.Screen
+        name="addRecipe"
+        component={AddRecipe}
+        options={{title: 'Dodaj przepis'}}
+      />
+      <Stack.Screen
+        name="favourites"
+        component={Favourites}
+        options={{title: 'Ulubione'}}
+      />
+      <Stack.Screen
+        name="editProfile"
+        component={EditProfile}
+        options={{title: 'Edytuj'}}
+      />
+      {common}
+    </Stack.Navigator>
+  );
+};
 
 export default UserNavigation;
