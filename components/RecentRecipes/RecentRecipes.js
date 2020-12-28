@@ -1,6 +1,7 @@
 import React from 'react';
 import {Text, View, FlatList, Image} from 'react-native';
 import styled from 'styled-components';
+import useNewestRecipes from '../../hooks/useNewest';
 import {COLORS} from '../../styles/variables';
 import RecipePreview from './../RecipePreview/RecipePreview';
 
@@ -24,6 +25,8 @@ const listStyle = {
 };
 
 const RecentRecipes = () => {
+  const newestRecipes = useNewestRecipes();
+
   return (
     <>
       <Wrapper>
@@ -33,9 +36,9 @@ const RecentRecipes = () => {
       <FlatList
         contentContainerStyle={listStyle}
         horizontal
-        data={DATA}
-        renderItem={({item}) => <RecipePreview name={item.name} />}
-        keyExtractor={(item) => item.id}
+        data={newestRecipes}
+        renderItem={(recipe) => <RecipePreview {...recipe.item} />}
+        keyExtractor={(recipe) => recipe.id}
       />
     </>
   );

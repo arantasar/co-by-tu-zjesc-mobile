@@ -1,29 +1,17 @@
 import React from 'react';
 import {Text, View, FlatList, Image} from 'react-native';
 import styled from 'styled-components';
+import useMostPopular from '../../hooks/usePopular';
 import {COLORS} from '../../styles/variables';
 import RecipePreview from './../RecipePreview/RecipePreview';
-
-const DATA = [
-  {
-    name: 'Pizza',
-    id: '1',
-  },
-  {
-    name: 'Spaghetti',
-    id: '2',
-  },
-  {
-    name: 'Spaghetti',
-    id: '3',
-  },
-];
 
 const listStyle = {
   paddingLeft: 20,
 };
 
 const BestRecipes = () => {
+  const mostPopular = useMostPopular();
+
   return (
     <>
       <Wrapper>
@@ -33,8 +21,8 @@ const BestRecipes = () => {
       <FlatList
         contentContainerStyle={listStyle}
         horizontal
-        data={DATA}
-        renderItem={({item}) => <RecipePreview name={item.name} />}
+        data={mostPopular}
+        renderItem={(recipe) => <RecipePreview {...recipe.item} />}
         keyExtractor={(item) => item.id}
       />
     </>
