@@ -23,5 +23,6 @@ const Header = styled(Text)`
 
 const StyledText = styled(Text)`
   background-color: white;
-  padding: 5px;
+  font-size: 16px;
+  padding: 10px 5px;
 `;

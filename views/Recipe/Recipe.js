@@ -1,5 +1,5 @@
 import React, {useContext} from 'react';
-import {View, Text, ScrollView} from 'react-native';
+import {View, Text, ScrollView, TouchableOpacity} from 'react-native';
 import useRecipe from './../../hooks/useRecipe';
 import AdminIcons from './AdminIcons/AdminIcons';
 import UserContext from './../../context/UserContext';
@@ -30,14 +30,18 @@ const Recipe = ({route}) => {
             <DateAdded>{recipe.dateAdded}</DateAdded>
           </Author>
           <Details size={recipe.size} prepareTime={recipe.prepareTime} />
+          {/* <Text>Ikonki klikalne</Text> */}
           <Ingredients
             recipeLines={recipe.recipeLines}
             categories={recipe.categories}
             diets={recipe.diets}
           />
           <Description description={recipe.description} />
-          <Text>Generuj listę zakupów</Text>
-          <Text>Ikonki klikalne</Text>
+          <GenerateList>
+            <Text style={{textAlign: 'center', color: 'white'}}>
+              Generuj listę zakupów
+            </Text>
+          </GenerateList>
         </>
       )}
     </ScrollView>
@@ -58,4 +62,9 @@ const Author = styled(View)`
   align-items: center;
   padding: 10px;
   background-color: white;
+`;
+
+const GenerateList = styled(TouchableOpacity)`
+  padding: 10px;
+  background-color: red;
 `;
