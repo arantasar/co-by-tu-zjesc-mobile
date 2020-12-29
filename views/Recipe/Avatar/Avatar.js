@@ -1,5 +1,4 @@
 import React from 'react';
-import styed from 'styled-components';
 import {Image, Text, View, TouchableOpacity} from 'react-native';
 import userDefault from './../../../assets/userDefault.png';
 import styled from 'styled-components';
@@ -35,4 +34,5 @@ const StyledView = styled(TouchableOpacity)`
 const StyledText = styled(Text)`
   font-weight: bold;
   flex: 1;
+  color: black;
 `;

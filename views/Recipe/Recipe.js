@@ -1,11 +1,12 @@
 import React, {useContext} from 'react';
-import {View, Text} from 'react-native';
+import {View, Text, ScrollView} from 'react-native';
 import useRecipe from './../../hooks/useRecipe';
 import AdminIcons from './AdminIcons/AdminIcons';
 import UserContext from './../../context/UserContext';
 import Photo from './Photo/Photo';
 import Avatar from './Avatar/Avatar';
 import styled from 'styled-components';
+import Details from './Details/Details';
 
 const Recipe = ({route}) => {
   const {id} = route.params;
@@ -14,7 +15,7 @@ const Recipe = ({route}) => {
   const admin = ctx.user && ctx.user.id === recipe.user.id && <AdminIcons />;
 
   return (
-    <View>
+    <ScrollView>
       {recipe && (
         <>
           {admin}
@@ -23,15 +24,14 @@ const Recipe = ({route}) => {
             <Avatar {...recipe.user} />
             <DateAdded>{recipe.dateAdded}</DateAdded>
           </Author>
-          <Text>Czas przygotowania</Text>
-          <Text>Ilość porcji</Text>
+          <Details />
           <Text>Lista składników</Text>
           <Text>Opis</Text>
           <Text>Generuj listę zakupów</Text>
           <Text>Ikonki klikalne</Text>
         </>
       )}
-    </View>
+    </ScrollView>
   );
 };
 
