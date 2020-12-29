@@ -3,15 +3,15 @@ import styled from 'styled-components';
 import {View, Text} from 'react-native';
 import {COLORS} from '../../../styles/variables';
 
-const Details = () => (
+const Details = ({prepareTime, size}) => (
   <StyledViews>
     <PreparationTime>
       <Header>Czas przygotowania</Header>
-      <Text>30 minut</Text>
+      <Text>{prepareTime} minut</Text>
     </PreparationTime>
     <Size>
       <Header>Ilość porcji</Header>
-      <Text>4</Text>
+      <Text>{size}</Text>
     </Size>
   </StyledViews>
 );
@@ -21,7 +21,8 @@ export default Details;
 const StyledViews = styled(View)`
   flex-direction: row;
   justify-content: space-around;
-  padding: 0 10px;
+  padding: 20px 10px;
+  background-color: white;
 `;
 
 const PreparationTime = styled(View)`

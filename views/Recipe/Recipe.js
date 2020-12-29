@@ -7,12 +7,16 @@ import Photo from './Photo/Photo';
 import Avatar from './Avatar/Avatar';
 import styled from 'styled-components';
 import Details from './Details/Details';
+import Ingredients from './Ingredients/Ingredients';
 
 const Recipe = ({route}) => {
   const {id} = route.params;
   const {recipe} = useRecipe(id);
   const ctx = useContext(UserContext);
-  const admin = ctx.user && ctx.user.id === recipe.user.id && <AdminIcons />;
+  const admin = ctx.user &&
+    ctx.user.id === recipe &&
+    recipe.user &&
+    recipe.user.id && <AdminIcons />;
 
   return (
     <ScrollView>
@@ -24,9 +28,13 @@ const Recipe = ({route}) => {
             <Avatar {...recipe.user} />
             <DateAdded>{recipe.dateAdded}</DateAdded>
           </Author>
-          <Details />
-          <Text>Lista składników</Text>
-          <Text>Opis</Text>
+          <Details size={recipe.size} prepareTime={recipe.prepareTime} />
+          <Ingredients
+            recipeLines={recipe.recipeLines}
+            categories={recipe.categories}
+            diets={recipe.diets}
+          />
+          <Text>{recipe.description}</Text>
           <Text>Generuj listę zakupów</Text>
           <Text>Ikonki klikalne</Text>
         </>
@@ -47,6 +55,6 @@ const Author = styled(View)`
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  padding: 0 10px;
-  margin: 10px 0;
+  padding: 10px;
+  background-color: white;
 `;
