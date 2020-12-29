@@ -8,6 +8,7 @@ import Avatar from './Avatar/Avatar';
 import styled from 'styled-components';
 import Details from './Details/Details';
 import Ingredients from './Ingredients/Ingredients';
+import Description from './Description/Description';
 
 const Recipe = ({route}) => {
   const {id} = route.params;
@@ -34,7 +35,7 @@ const Recipe = ({route}) => {
             categories={recipe.categories}
             diets={recipe.diets}
           />
-          <Text>{recipe.description}</Text>
+          <Description description={recipe.description} />
           <Text>Generuj listę zakupów</Text>
           <Text>Ikonki klikalne</Text>
         </>
