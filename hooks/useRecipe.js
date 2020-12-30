@@ -15,7 +15,7 @@ const useRecipe = (id) => {
       .finally(() => setIsisLoading(false));
   }, []);
 
-  return {recipe, isLoading};
+  return {recipe, isLoading, setRecipe};
 };
 
 export default useRecipe;

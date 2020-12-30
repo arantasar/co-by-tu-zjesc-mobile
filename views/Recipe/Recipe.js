@@ -9,15 +9,23 @@ import styled from 'styled-components';
 import Details from './Details/Details';
 import Ingredients from './Ingredients/Ingredients';
 import Description from './Description/Description';
+import Stats from './Stats/Stats';
 
 const Recipe = ({route}) => {
   const {id} = route.params;
-  const {recipe} = useRecipe(id);
+  const {recipe, setRecipe} = useRecipe(id);
   const ctx = useContext(UserContext);
   const admin = ctx.user &&
     ctx.user.id === recipe &&
     recipe.user &&
     recipe.user.id && <AdminIcons />;
+
+  const refresh = (recipe, user) => {
+    setRecipe(recipe);
+    if (user) {
+      ctx.updateUser(user);
+    }
+  };
 
   return (
     <ScrollView>
@@ -30,7 +38,13 @@ const Recipe = ({route}) => {
             <DateAdded>{recipe.dateAdded}</DateAdded>
           </Author>
           <Details size={recipe.size} prepareTime={recipe.prepareTime} />
-          {/* <Text>Ikonki klikalne</Text> */}
+          <Stats
+            refresh={refresh}
+            inFavourite={recipe.inFavourite}
+            likes={recipe.likes}
+            viewCounter={recipe.viewCounter}
+            recipeId={recipe.id}
+          />
           <Ingredients
             recipeLines={recipe.recipeLines}
             categories={recipe.categories}
@@ -66,5 +80,5 @@ const Author = styled(View)`
 
 const GenerateList = styled(TouchableOpacity)`
   padding: 10px;
-  background-color: red;
+  background-color: green;
 `;

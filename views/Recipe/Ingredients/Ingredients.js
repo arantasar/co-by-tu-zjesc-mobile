@@ -63,7 +63,7 @@ const IngredientList = styled(View)`
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: space-between;
-  padding: 5px 10px;
+  padding: 0 5px;
 `;
 
 const IngredientItem = styled(View)`
@@ -72,6 +72,7 @@ const IngredientItem = styled(View)`
   background-color: rgba(255, 255, 255, 0.5);
   border: 1px solid ${COLORS.primary};
   border-radius: 10px;
+  margin: 5px 0;
 `;
 
 const Name = styled(Text)`
