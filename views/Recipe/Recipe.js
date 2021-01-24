@@ -10,6 +10,7 @@ import Details from './Details/Details';
 import Ingredients from './Ingredients/Ingredients';
 import Description from './Description/Description';
 import Stats from './Stats/Stats';
+import {useNavigation} from '@react-navigation/native';
 
 const Recipe = ({route}) => {
   const {id} = route.params;
@@ -26,6 +27,8 @@ const Recipe = ({route}) => {
       ctx.updateUser(user);
     }
   };
+
+  const nav = useNavigation();
 
   return (
     <ScrollView>
@@ -51,7 +54,10 @@ const Recipe = ({route}) => {
             diets={recipe.diets}
           />
           <Description description={recipe.description} />
-          <GenerateList>
+          <GenerateList
+            onPress={() =>
+              nav.navigate('shopping', {name: recipe.name, id: recipe.id})
+            }>
             <Text style={{textAlign: 'center', color: 'white'}}>
               Generuj listę zakupów
             </Text>
