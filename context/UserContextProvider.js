@@ -5,6 +5,7 @@ const UserContextProvider = ({children}) => {
   const [token, setToken] = useState('');
   const [user, setUser] = useState(null);
   const [isUserLogged, setIsUserLogged] = useState(false);
+  const [week, setWeek] = useState([]);
 
   const updateUser = ({description, email, photoPath, ...rest}) => {
     setUser((prev) => {
@@ -41,6 +42,8 @@ const UserContextProvider = ({children}) => {
     updateUser,
     setToken,
     setUser,
+    week,
+    setWeek,
   };
 
   return <UserContext.Provider value={value}>{children}</UserContext.Provider>;

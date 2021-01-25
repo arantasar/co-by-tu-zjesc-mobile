@@ -15,12 +15,14 @@ const context = {
     daysInService: 0,
     receivedLikes: 0,
   },
+  week: [],
   token: '',
   login: () => {},
   logout: () => {},
   updateUser: () => {},
   setUser: () => {},
   setToken: () => {},
+  setWeek: () => {},
 };
 
 const userContext = createContext(context);

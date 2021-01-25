@@ -11,6 +11,7 @@ import Ingredients from './Ingredients/Ingredients';
 import Description from './Description/Description';
 import Stats from './Stats/Stats';
 import {useNavigation} from '@react-navigation/native';
+import axios from './../../axios/';
 
 const Recipe = ({route}) => {
   const {id} = route.params;
@@ -26,6 +27,27 @@ const Recipe = ({route}) => {
     if (user) {
       ctx.updateUser(user);
     }
+  };
+
+  const addToMyWeek = async () => {
+    await axios.post(
+      '/api/users/week',
+      {
+        recipeId: recipe.id,
+      },
+      {
+        headers: {
+          Authorization: `Bearer ${ctx.token}`,
+        },
+      },
+    );
+    const week = await axios.post('/api/users/getweek', null, {
+      headers: {
+        Authorization: `Bearer ${ctx.token}`,
+      },
+    });
+    ctx.setWeek(week.data);
+    nav.navigate('week');
   };
 
   const nav = useNavigation();
@@ -62,6 +84,13 @@ const Recipe = ({route}) => {
               Generuj listę zakupów
             </Text>
           </GenerateList>
+          {ctx.user && ctx.user.id && (
+            <MyWeek onPress={addToMyWeek}>
+              <Text style={{textAlign: 'center', color: 'white'}}>
+                Dodaj do mojego tygodnia
+              </Text>
+            </MyWeek>
+          )}
         </>
       )}
     </ScrollView>
@@ -87,4 +116,9 @@ const Author = styled(View)`
 const GenerateList = styled(TouchableOpacity)`
   padding: 10px;
   background-color: green;
+`;
+
+const MyWeek = styled(TouchableOpacity)`
+  padding: 10px;
+  background-color: black;
 `;

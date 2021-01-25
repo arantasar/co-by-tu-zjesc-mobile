@@ -6,6 +6,7 @@ import AddRecipe from '../views/AddRecipe/AddRecipe';
 import Favourites from '../views/Favourites/Favourites';
 import EditProfile from '../views/EditProfile/EditProfile';
 import CommonNavigation from './CommonNavigation';
+import MyWeek from '../views/MyWeek/MyWeek';
 
 const Stack = createStackNavigator();
 

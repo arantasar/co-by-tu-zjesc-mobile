@@ -13,6 +13,7 @@ import LoginNavigation from './LoginNavigation';
 import HomeNavigation from './HomeNavigation';
 import Home from './../views/Home/Home';
 import {COLORS} from '../styles/variables';
+import MyWeek from '../views/MyWeek/MyWeek';
 
 const Tab = createBottomTabNavigator();
 
@@ -57,11 +58,20 @@ const MainNavigation = () => {
       />
       <Tab.Screen name="search" component={Home} options={{title: 'Szukaj'}} />
       {ctx.isUserLogged ? (
-        <Tab.Screen
-          name="profile"
-          component={UserNavigation}
-          options={{title: 'Mój profil'}}
-        />
+        [
+          <Tab.Screen
+            name="profile"
+            key={'profile'}
+            component={UserNavigation}
+            options={{title: 'Mój profil'}}
+          />,
+          <Tab.Screen
+            name="week"
+            key={'week'}
+            component={MyWeek}
+            options={{title: 'Mój tydzień'}}
+          />,
+        ]
       ) : (
         <Tab.Screen
           name="login"
@@ -69,11 +79,6 @@ const MainNavigation = () => {
           options={{title: 'Zaloguj'}}
         />
       )}
-      <Tab.Screen
-        name="week"
-        component={Home}
-        options={{title: 'Mój tydzień'}}
-      />
     </Tab.Navigator>
   );
 };

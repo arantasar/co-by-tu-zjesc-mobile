@@ -21,7 +21,7 @@ const Profile = () => {
   return (
     <StyledView>
       <PhotoWrapper>
-        <StyledImage source={(user && user.photoPath) || userDefault} />
+        <StyledImage source={{uri: (user && user.photoPath) || userDefault}} />
       </PhotoWrapper>
       <View>
         <Header>{user.name}</Header>
