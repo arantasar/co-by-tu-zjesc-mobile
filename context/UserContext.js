@@ -15,6 +15,7 @@ const context = {
     daysInService: 0,
     receivedLikes: 0,
   },
+  selectedIngredients: [],
   week: [],
   token: '',
   login: () => {},
@@ -23,6 +24,7 @@ const context = {
   setUser: () => {},
   setToken: () => {},
   setWeek: () => {},
+  setSelectedIngredients: () => {},
 };
 
 const userContext = createContext(context);

@@ -17,7 +17,7 @@ const Panel = () => {
 
   const links = [
     {text: 'Moje przepisy', to: 'userRecipes'},
-    {text: 'Dodaj przepis', to: 'addRecipe'},
+    {text: 'Dodaj przepis', to: 'addIngredients'},
     {text: 'Ulubione', to: 'favourites'},
     {text: 'Edytuj', to: 'editProfile'},
     {text: 'Wyloguj się', handler: logoutHandler},

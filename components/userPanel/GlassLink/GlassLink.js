@@ -7,7 +7,6 @@ const GlassLink = ({text, to, handler}) => {
   const nav = useNavigation();
 
   const clickHandler = () => {
-    console.log('Wywoluje');
     if (handler) {
       handler();
     } else {
