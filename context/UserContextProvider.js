@@ -7,6 +7,14 @@ const UserContextProvider = ({children}) => {
   const [isUserLogged, setIsUserLogged] = useState(false);
   const [week, setWeek] = useState([]);
   const [selectedIngredients, setSelectedIngredients] = useState([]);
+  const [newRecipe, setNewRecipe] = useState({
+    name: '',
+    description: '',
+    categories: [],
+    diets: [],
+    size: '',
+    prepareTime: '',
+  });
 
   const updateUser = ({description, email, photoPath, ...rest}) => {
     setUser((prev) => {
@@ -19,6 +27,18 @@ const UserContextProvider = ({children}) => {
             photoPath,
           }
         : null;
+    });
+  };
+
+  const resetNewRecipe = () => {
+    setSelectedIngredients([]);
+    setNewRecipe({
+      name: '',
+      description: '',
+      categories: [],
+      diets: [],
+      size: '',
+      prepareTime: '',
     });
   };
 
@@ -47,6 +67,9 @@ const UserContextProvider = ({children}) => {
     setWeek,
     selectedIngredients,
     setSelectedIngredients,
+    newRecipe,
+    setNewRecipe,
+    resetNewRecipe,
   };
 
   return <UserContext.Provider value={value}>{children}</UserContext.Provider>;

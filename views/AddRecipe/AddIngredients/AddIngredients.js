@@ -48,7 +48,12 @@ const AddIngredients = () => {
           <IngredientsHeader value={value} onChangeText={onChangeText} />
         }
       />
-      <NextButton>
+      <NextButton
+        onPress={() => {
+          if (selectedIngredients.length) {
+            nav.navigate('addDetails');
+          }
+        }}>
         <NextText>Dalej</NextText>
       </NextButton>
     </View>

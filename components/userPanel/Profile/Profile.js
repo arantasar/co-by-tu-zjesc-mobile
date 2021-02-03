@@ -21,7 +21,9 @@ const Profile = () => {
   return (
     <StyledView>
       <PhotoWrapper>
-        <StyledImage source={{uri: (user && user.photoPath) || userDefault}} />
+        <StyledImage
+          source={{uri: (user && user.photoPath) || 'https://picsum.photos/75'}}
+        />
       </PhotoWrapper>
       <View>
         <Header>{user.name}</Header>

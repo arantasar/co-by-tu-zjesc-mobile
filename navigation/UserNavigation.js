@@ -8,6 +8,7 @@ import CommonNavigation from './CommonNavigation';
 import AddIngredients from '../views/AddRecipe/AddIngredients/AddIngredients';
 import AddAmount from '../views/AddRecipe/AddAmount/AddAmount';
 import Home from '../views/Home/Home';
+import AddDetails from '../views/AddRecipe/AddDetails/AddDetails';
 
 const Stack = createStackNavigator();
 
@@ -47,9 +48,9 @@ const UserNavigation = () => {
         options={({route}) => ({title: route.params.ingredient.name})}
       />
       <Stack.Screen
-        name="addCategories"
-        component={Home}
-        options={{title: 'Kategorie'}}
+        name="addDetails"
+        component={AddDetails}
+        options={{title: 'Szczegóły'}}
       />
       <Stack.Screen
         name="addPhoto"

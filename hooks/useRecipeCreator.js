@@ -1,9 +1,30 @@
 import {useState, useEffect} from 'react';
 import {useContext} from 'react/cjs/react.development';
-import userContext from '../context/UserContext';
+import userContext from './../context/UserContext';
 
 const useRecipeCreator = () => {
-  const {selectedIngredients, setSelectedIngredients} = useContext(userContext);
+  const {
+    selectedIngredients,
+    setSelectedIngredients,
+    newRecipe,
+    setNewRecipe,
+  } = useContext(userContext);
+
+  const toggleItem = (item, type) => {
+    const candidate = newRecipe[type].find((i) => i.id === item.id);
+    if (candidate) {
+      const newItems = newRecipe[type].filter((i) => i !== candidate);
+      setNewRecipe((prev) => ({
+        ...prev,
+        [type]: newItems,
+      }));
+    } else {
+      setNewRecipe((prev) => ({
+        ...prev,
+        [type]: [...prev[type], item],
+      }));
+    }
+  };
 
   const addToSelected = (ingredient, unit, amount) => {
     const candidate = selectedIngredients.find(
@@ -22,20 +43,7 @@ const useRecipeCreator = () => {
     setSelectedIngredients((prev) => prev.filter((i) => i !== candidate));
   };
 
-  const toggleSelection = (ingredient) => {
-    const candidate = selectedIngredients.find(
-      (selected) => selected.id === ingredient.id,
-    );
-    if (candidate) {
-      setSelectedIngredients((prev) =>
-        prev.filter((item) => item.id !== ingredient.id),
-      );
-    } else {
-      setSelectedIngredients((prev) => [...prev, ingredient.id]);
-    }
-  };
-
-  return {addToSelected, remove};
+  return {addToSelected, remove, toggleItem};
 };
 
 export default useRecipeCreator;

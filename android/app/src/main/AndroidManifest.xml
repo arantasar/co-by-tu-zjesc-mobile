@@ -2,6 +2,7 @@
   package="com.cobytuzjescmobile">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permisssion.CAMERA"></uses-permission>
 
     <application
       android:name=".MainApplication"
