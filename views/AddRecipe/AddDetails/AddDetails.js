@@ -54,7 +54,7 @@ const AddDetails = () => {
         ({unit, amount, ...rest}) => ({
           unit,
           amount: Number(amount),
-          ingredient: rest,
+          ...rest,
         }),
       );
 
