@@ -34,6 +34,17 @@ const AddIngredients = () => {
     <View>
       <FlatList
         data={ingredients.filter(search)}
+        ListFooterComponentStyle={{flex: 1, justifyContent: 'flex-end'}}
+        ListFooterComponent={
+          <NextButton
+            onPress={() => {
+              if (selectedIngredients.length) {
+                nav.navigate('addDetails');
+              }
+            }}>
+            <NextText>Dalej</NextText>
+          </NextButton>
+        }
         renderItem={({item}) => (
           <Ingredient
             ingredient={item}
@@ -48,14 +59,6 @@ const AddIngredients = () => {
           <IngredientsHeader value={value} onChangeText={onChangeText} />
         }
       />
-      <NextButton
-        onPress={() => {
-          if (selectedIngredients.length) {
-            nav.navigate('addDetails');
-          }
-        }}>
-        <NextText>Dalej</NextText>
-      </NextButton>
     </View>
   );
 };
