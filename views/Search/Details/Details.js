@@ -37,7 +37,11 @@ const Details = () => {
     axios
       .post('/api/search', searchData)
       .then((res) => {
-        nav.navigate('searchResults', res.data);
+        if (res.data.length) {
+          nav.navigate('searchResults', res.data);
+        } else {
+          errorHandler('Nie znaleziono żadnego przepisu, spróbuj inaczej');
+        }
       })
       .catch(errorHandler)
       .finally(() => {
