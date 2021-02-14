@@ -11,9 +11,9 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import LoginNavigation from './LoginNavigation';
 import HomeNavigation from './HomeNavigation';
-import Home from './../views/Home/Home';
 import {COLORS} from '../styles/variables';
 import MyWeek from '../views/MyWeek/MyWeek';
+import SearchNavigation from './SearchNavigation';
 
 const Tab = createBottomTabNavigator();
 
@@ -56,7 +56,11 @@ const MainNavigation = () => {
         component={HomeNavigation}
         options={{title: 'Odkrywaj'}}
       />
-      <Tab.Screen name="search" component={Home} options={{title: 'Szukaj'}} />
+      <Tab.Screen
+        name="search"
+        component={SearchNavigation}
+        options={{title: 'Szukaj'}}
+      />
       {ctx.isUserLogged ? (
         [
           <Tab.Screen

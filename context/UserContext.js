@@ -16,6 +16,7 @@ const context = {
     receivedLikes: 0,
   },
   selectedIngredients: [],
+  searchedIngredients: [],
   newRecipe: {
     name: '',
     description: '',
@@ -34,6 +35,7 @@ const context = {
   setToken: () => {},
   setWeek: () => {},
   setSelectedIngredients: () => {},
+  setSearchedIngredients: () => {},
 };
 
 const userContext = createContext(context);

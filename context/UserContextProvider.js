@@ -7,6 +7,7 @@ const UserContextProvider = ({children}) => {
   const [isUserLogged, setIsUserLogged] = useState(false);
   const [week, setWeek] = useState([]);
   const [selectedIngredients, setSelectedIngredients] = useState([]);
+  const [searchedIngredients, setSearchedIngredients] = useState([]);
   const [newRecipe, setNewRecipe] = useState({
     name: '',
     description: '',
@@ -70,6 +71,8 @@ const UserContextProvider = ({children}) => {
     newRecipe,
     setNewRecipe,
     resetNewRecipe,
+    searchedIngredients,
+    setSearchedIngredients,
   };
 
   return <UserContext.Provider value={value}>{children}</UserContext.Provider>;
