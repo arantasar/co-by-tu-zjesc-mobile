@@ -38,7 +38,7 @@ const Details = () => {
       .post('/api/search', searchData)
       .then((res) => {
         if (res.data.length) {
-          nav.navigate('searchResults', res.data);
+          nav.navigate('searchResults', {recipes: res.data, size: value});
         } else {
           errorHandler('Nie znaleziono żadnego przepisu, spróbuj inaczej');
         }

@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import {ScrollView, View, Text, Image, TouchableOpacity} from 'react-native';
 import useRecipe from './../../hooks/useRecipe';
 import styled from 'styled-components';
@@ -7,8 +7,8 @@ import Background from '../../components/common/Background/Background';
 import background2 from './../../assets/backgrounds/kola8b.png';
 
 const Shopping = ({route}) => {
-  const {id} = route.params;
-  const {recipe, setRecipe} = useRecipe(id);
+  const {id, size} = route.params;
+  const {recipe, setRecipe} = useRecipe(id, size);
   const [excluded, setExcluded] = useState([]);
 
   const exclude = (id) => {

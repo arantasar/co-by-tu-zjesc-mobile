@@ -32,7 +32,6 @@ const Login = () => {
           const {user, token} = res.data;
           ctx.login(user, token);
           navigation.navigate('home');
-          console.log(ctx.isUserLogged);
         })
         .catch(errorHandler);
     }

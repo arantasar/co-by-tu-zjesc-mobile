@@ -5,13 +5,17 @@ import {TouchableOpacity} from 'react-native-gesture-handler';
 import styled from 'styled-components';
 import Stats from './Stats/Stats';
 
-const RecipeCard = ({recipe}) => {
+const RecipeCard = ({recipe, size}) => {
   const nav = useNavigation();
 
   return (
     <StyledView
       onPress={() =>
-        nav.navigate('recipe', {name: recipe.name, id: recipe.id})
+        nav.navigate('recipe', {
+          name: recipe.name,
+          id: recipe.id,
+          size,
+        })
       }>
       <RecipeName>{recipe.name}</RecipeName>
       <RecipeDetails>

@@ -26,7 +26,6 @@ const useSearch = () => {
   };
 
   const toggleSelected = (ingredient) => {
-    console.log(ingredient);
     const candidate = searchedIngredients.find((i) => i.id === ingredient.id);
     if (!candidate) {
       setSearchedIngredients((prev) => [...prev, ingredient]);

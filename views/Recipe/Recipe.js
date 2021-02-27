@@ -1,4 +1,4 @@
-import React, {useContext} from 'react';
+import React, {useContext, useEffect} from 'react';
 import {View, Text, ScrollView, TouchableOpacity} from 'react-native';
 import useRecipe from './../../hooks/useRecipe';
 import AdminIcons from './AdminIcons/AdminIcons';
@@ -14,8 +14,8 @@ import {useNavigation} from '@react-navigation/native';
 import axios from './../../axios/';
 
 const Recipe = ({route}) => {
-  const {id} = route.params;
-  const {recipe, setRecipe} = useRecipe(id);
+  const {id, size} = route.params;
+  const {recipe, setRecipe} = useRecipe(id, size);
   const ctx = useContext(UserContext);
   const admin = ctx.user &&
     ctx.user.id === recipe &&
@@ -34,6 +34,7 @@ const Recipe = ({route}) => {
       '/api/users/week',
       {
         recipeId: recipe.id,
+        size,
       },
       {
         headers: {
@@ -78,7 +79,7 @@ const Recipe = ({route}) => {
           <Description description={recipe.description} />
           <GenerateList
             onPress={() =>
-              nav.navigate('shopping', {name: recipe.name, id: recipe.id})
+              nav.navigate('shopping', {name: recipe.name, id: recipe.id, size})
             }>
             <Text style={{textAlign: 'center', color: 'white'}}>
               Generuj listę zakupów
