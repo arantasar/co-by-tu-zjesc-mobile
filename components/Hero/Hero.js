@@ -5,15 +5,31 @@ import {
   TouchableOpacity,
   Dimensions,
 } from 'react-native';
+import {useNavigation} from '@react-navigation/native';
 import styled from 'styled-components';
 import hero from './../../assets/hero/home.jpg';
 import {COLORS} from './../../styles/variables';
 
 const height = Dimensions.get('window').height;
 
-function onPress() {
-  console.log('aha');
-}
+const Hero = () => {
+  const nav = useNavigation();
+
+  function onPress() {
+    nav.navigate('search');
+  }
+
+  return (
+    <StyledImageBackground source={hero}>
+      <StyledText>Nie masz pomysłu na obiad?</StyledText>
+      <TouchableOpacity onPress={onPress} activeOpacity={0.5}>
+        <Button>Znajdź go!</Button>
+      </TouchableOpacity>
+    </StyledImageBackground>
+  );
+};
+
+export default Hero;
 
 const StyledImageBackground = styled(ImageBackground)`
   width: 100%;
@@ -39,14 +55,3 @@ const Button = styled(Text)`
   text-transform: uppercase;
   font-size: 24px;
 `;
-
-const Hero = () => (
-  <StyledImageBackground source={hero}>
-    <StyledText>Nie masz pomysłu na obiad?</StyledText>
-    <TouchableOpacity onPress={onPress} activeOpacity={0.5}>
-      <Button>Znajdź go!</Button>
-    </TouchableOpacity>
-  </StyledImageBackground>
-);
-
-export default Hero;
