@@ -8,18 +8,20 @@ import userContext from '../../context/UserContext';
 import axios from './../../axios';
 import background from './../../assets/backgrounds/kola8b.png';
 import styled from 'styled-components';
+import {useIsFocused} from '@react-navigation/native';
 
 const UserRecipes = () => {
   const {user} = useContext(userContext);
   const [recipes, setRecipes] = useState([]);
   const id = user && user.id;
+  const isFocused = useIsFocused();
 
   useEffect(() => {
     axios
       .get(`api/users/${id}/recipes`)
       .then((res) => setRecipes(res.data))
       .catch(errorHandler);
-  }, []);
+  }, [isFocused]);
 
   return (
     <StyledView>

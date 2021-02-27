@@ -1,5 +1,5 @@
 import React, {useContext, useEffect} from 'react';
-import {View, Text, ScrollView, TouchableOpacity} from 'react-native';
+import {View, Text, ScrollView, TouchableOpacity, Alert} from 'react-native';
 import useRecipe from './../../hooks/useRecipe';
 import AdminIcons from './AdminIcons/AdminIcons';
 import UserContext from './../../context/UserContext';
@@ -15,12 +15,32 @@ import axios from './../../axios/';
 
 const Recipe = ({route}) => {
   const {id, size} = route.params;
-  const {recipe, setRecipe} = useRecipe(id, size);
+  const {recipe, setRecipe, deleteRecipe} = useRecipe(id, size);
   const ctx = useContext(UserContext);
   const admin = ctx.user &&
     ctx.user.id === recipe &&
     recipe.user &&
     recipe.user.id && <AdminIcons />;
+
+  const handleDelete = () => {
+    Alert.alert(
+      'Usuń przepis',
+      'Czy na pewno usunąć przepis ' + recipe.name,
+      [
+        {
+          text: 'Nie',
+          style: 'cancel',
+        },
+        {
+          text: 'Tak',
+          onPress: () => {
+            deleteRecipe().then(nav.navigate('userRecipes'));
+          },
+        },
+      ],
+      {cancelable: false},
+    );
+  };
 
   const refresh = (recipe, user) => {
     setRecipe(recipe);
@@ -92,6 +112,13 @@ const Recipe = ({route}) => {
               </Text>
             </MyWeek>
           )}
+          {ctx.user && ctx.user.id === recipe.userId && (
+            <Delete onPress={handleDelete}>
+              <Text style={{textAlign: 'center', color: 'white'}}>
+                Usuń przepis
+              </Text>
+            </Delete>
+          )}
         </>
       )}
     </ScrollView>
@@ -122,4 +149,9 @@ const GenerateList = styled(TouchableOpacity)`
 const MyWeek = styled(TouchableOpacity)`
   padding: 10px;
   background-color: black;
+`;
+
+const Delete = styled(TouchableOpacity)`
+  padding: 10px;
+  background-color: red;
 `;
