@@ -38,12 +38,35 @@ const useRecipeCreator = () => {
     }
   };
 
+  const setRecipeToEdit = (recipe) => {
+    const {
+      id,
+      recipeLines,
+      name,
+      description,
+      categories,
+      diets,
+      size,
+      prepareTime,
+    } = recipe;
+    setSelectedIngredients([...recipeLines]);
+    setNewRecipe({
+      id,
+      name,
+      description,
+      categories,
+      diets,
+      size: String(size),
+      prepareTime: String(prepareTime),
+    });
+  };
+
   const remove = (id) => {
     const candidate = selectedIngredients.find((i) => i.ingredient.id === id);
     setSelectedIngredients((prev) => prev.filter((i) => i !== candidate));
   };
 
-  return {addToSelected, remove, toggleItem};
+  return {addToSelected, remove, toggleItem, setRecipeToEdit};
 };
 
 export default useRecipeCreator;

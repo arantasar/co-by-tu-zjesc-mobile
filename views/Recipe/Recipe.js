@@ -12,11 +12,13 @@ import Description from './Description/Description';
 import Stats from './Stats/Stats';
 import {useNavigation} from '@react-navigation/native';
 import axios from './../../axios/';
+import useRecipeCreator from '../../hooks/useRecipeCreator';
 
 const Recipe = ({route}) => {
   const {id, size} = route.params;
   const {recipe, setRecipe, deleteRecipe} = useRecipe(id, size);
   const ctx = useContext(UserContext);
+  const {setRecipeToEdit} = useRecipeCreator();
   const admin = ctx.user &&
     ctx.user.id === recipe &&
     recipe.user &&
@@ -40,6 +42,11 @@ const Recipe = ({route}) => {
       ],
       {cancelable: false},
     );
+  };
+
+  const edit = () => {
+    setRecipeToEdit(recipe);
+    nav.navigate('edit');
   };
 
   const refresh = (recipe, user) => {
@@ -113,11 +120,18 @@ const Recipe = ({route}) => {
             </MyWeek>
           )}
           {ctx.user && ctx.user.id === recipe.userId && (
-            <Delete onPress={handleDelete}>
-              <Text style={{textAlign: 'center', color: 'white'}}>
-                Usuń przepis
-              </Text>
-            </Delete>
+            <>
+              <Edit onPress={edit}>
+                <Text style={{textAlign: 'center', color: 'black'}}>
+                  Edytuj
+                </Text>
+              </Edit>
+              <Delete onPress={handleDelete}>
+                <Text style={{textAlign: 'center', color: 'white'}}>
+                  Usuń przepis
+                </Text>
+              </Delete>
+            </>
           )}
         </>
       )}
@@ -154,4 +168,9 @@ const MyWeek = styled(TouchableOpacity)`
 const Delete = styled(TouchableOpacity)`
   padding: 10px;
   background-color: red;
+`;
+
+const Edit = styled(TouchableOpacity)`
+  padding: 10px;
+  background-color: white;
 `;

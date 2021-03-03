@@ -58,6 +58,8 @@ const AddDetails = () => {
         }),
       );
 
+      console.log(recipeLines);
+
       const data = new FormData();
 
       if (photoPreview && photoPreview.uri) {
@@ -78,8 +80,12 @@ const AddDetails = () => {
       data.append('categories', JSON.stringify(newRecipe.categories));
       data.append('diets', JSON.stringify(newRecipe.diets));
 
+      const url = newRecipe.id
+        ? '/api/recipes/update/' + newRecipe.id
+        : '/api/recipes';
+
       axios
-        .post('/api/recipes', data, {
+        .post(url, data, {
           headers: {
             'Content-Type': 'multipart/form-data',
             Authorization: `Bearer ${token}`,

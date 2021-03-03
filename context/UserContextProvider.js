@@ -34,6 +34,7 @@ const UserContextProvider = ({children}) => {
   const resetNewRecipe = () => {
     setSelectedIngredients([]);
     setNewRecipe({
+      id: '',
       name: '',
       description: '',
       categories: [],

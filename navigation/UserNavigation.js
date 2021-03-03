@@ -23,6 +23,11 @@ const UserNavigation = () => {
         options={{title: 'Mój profil'}}
       />
       <Stack.Screen
+        name="edit"
+        component={AddIngredients}
+        options={{title: 'Edytuj przepis'}}
+      />
+      <Stack.Screen
         name="userRecipes"
         component={UserRecipes}
         options={{title: 'Moje przepisy'}}

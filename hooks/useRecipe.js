@@ -2,14 +2,15 @@ import {useState, useEffect, useContext} from 'react';
 import {errorHandler} from '../common/errorHandler';
 import axios from './../axios/';
 import UserContext from './../context/UserContext';
+import {useIsFocused} from '@react-navigation/native';
 
 const useRecipe = (id, size) => {
   const [recipe, setRecipe] = useState();
   const [isLoading, setIsisLoading] = useState(false);
   const {token} = useContext(UserContext);
+  const isFocused = useIsFocused();
 
   const deleteRecipe = () => {
-    console.log(token, id);
     return axios
       .delete(`/api/recipes/${id}`, {
         headers: {
@@ -26,7 +27,7 @@ const useRecipe = (id, size) => {
       .then((res) => setRecipe(res.data))
       .catch(errorHandler)
       .finally(() => setIsisLoading(false));
-  }, []);
+  }, [isFocused]);
 
   return {recipe, isLoading, setRecipe, deleteRecipe};
 };
