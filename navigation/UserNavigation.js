@@ -9,6 +9,7 @@ import AddIngredients from '../views/AddRecipe/AddIngredients/AddIngredients';
 import AddAmount from '../views/AddRecipe/AddAmount/AddAmount';
 import Home from '../views/Home/Home';
 import AddDetails from '../views/AddRecipe/AddDetails/AddDetails';
+import AddUserIngredient from '../views/AddUserIngredient/AddUserIngredient';
 
 const Stack = createStackNavigator();
 
@@ -36,6 +37,11 @@ const UserNavigation = () => {
         name="favourites"
         component={Favourites}
         options={{title: 'Ulubione'}}
+      />
+      <Stack.Screen
+        name="addIngredient"
+        component={AddUserIngredient}
+        options={{title: 'Dodaj składnik'}}
       />
       <Stack.Screen
         name="editProfile"

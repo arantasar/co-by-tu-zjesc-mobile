@@ -19,6 +19,7 @@ const Panel = () => {
     {text: 'Moje przepisy', to: 'userRecipes'},
     {text: 'Dodaj przepis', to: 'addIngredients'},
     {text: 'Ulubione', to: 'favourites'},
+    {text: 'Dodaj składnik', to: 'addIngredient'},
     {text: 'Edytuj', to: 'editProfile'},
     {text: 'Wyloguj się', handler: logoutHandler},
   ];

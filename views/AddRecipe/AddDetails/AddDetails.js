@@ -58,8 +58,6 @@ const AddDetails = () => {
         }),
       );
 
-      console.log(recipeLines);
-
       const data = new FormData();
 
       if (photoPreview && photoPreview.uri) {
