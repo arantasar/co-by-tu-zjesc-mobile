@@ -48,6 +48,7 @@ const useRecipeCreator = () => {
       diets,
       size,
       prepareTime,
+      photoPath,
     } = recipe;
     setSelectedIngredients([...recipeLines]);
     setNewRecipe({
@@ -58,6 +59,7 @@ const useRecipeCreator = () => {
       diets,
       size: String(size),
       prepareTime: String(prepareTime),
+      photoPath,
     });
   };
 

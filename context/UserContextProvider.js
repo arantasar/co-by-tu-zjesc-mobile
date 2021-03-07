@@ -41,6 +41,7 @@ const UserContextProvider = ({children}) => {
       diets: [],
       size: '',
       prepareTime: '',
+      photoPath: '',
     });
   };
 

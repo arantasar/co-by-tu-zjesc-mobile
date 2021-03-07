@@ -171,7 +171,9 @@ const AddDetails = () => {
             </HeaderWrapper>
             <Tags tags={diets} type={'diets'} />
             <ButtonWrapper onPress={takePhoto} activeOpacity={0.5}>
-              <StyledButton>Dodaj zdjęcie</StyledButton>
+              <StyledButton>
+                {newRecipe.photoPath ? ' Zmień' : 'Dodaj'} zdjęcie
+              </StyledButton>
             </ButtonWrapper>
             {photoPreview ? (
               <Image
@@ -184,6 +186,17 @@ const AddDetails = () => {
                 height={photoPreview.height}
                 source={{
                   uri: photoPreview.uri,
+                }}
+              />
+            ) : newRecipe.photoPath ? (
+              <Image
+                style={{
+                  width: '100%',
+                  height: 600,
+                  resizeMode: 'contain',
+                }}
+                source={{
+                  uri: 'https://picsum.photos/300',
                 }}
               />
             ) : null}
