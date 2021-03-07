@@ -9,6 +9,7 @@ import background2 from './../../assets/backgrounds/kola8b.png';
 import {launchCamera} from 'react-native-image-picker';
 import {useNavigation} from '@react-navigation/native';
 import axios from './../../axios/';
+import {errorHandler} from './../../common/errorHandler';
 
 const AddUserIngredient = () => {
   const navigation = useNavigation();
@@ -59,11 +60,13 @@ const AddUserIngredient = () => {
         method: 'post',
         url: '/api/ingredients',
         data,
-      }).then(() => {
-        setName('Wpisz nazwę');
-        setSelectedUnits([]);
-        navigation.navigate('panel');
-      });
+      })
+        .then(() => {
+          setName('Wpisz nazwę');
+          setSelectedUnits([]);
+          navigation.navigate('panel');
+        })
+        .catch(errorHandler);
     }
   };
 
