@@ -21,12 +21,14 @@ const useRecipe = (id, size) => {
   };
 
   useEffect(() => {
-    setIsisLoading(true);
-    axios
-      .get(`/api/recipes/${id}/${size}`)
-      .then((res) => setRecipe(res.data))
-      .catch(errorHandler)
-      .finally(() => setIsisLoading(false));
+    if (isFocused) {
+      setIsisLoading(true);
+      axios
+        .get(`/api/recipes/${id}/${size}`)
+        .then((res) => setRecipe(res.data))
+        .catch(errorHandler)
+        .finally(() => setIsisLoading(false));
+    }
   }, [isFocused]);
 
   return {recipe, isLoading, setRecipe, deleteRecipe};
