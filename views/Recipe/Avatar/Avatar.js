@@ -8,7 +8,13 @@ const Avatar = ({id, name, photoPath}) => {
   const nav = useNavigation();
 
   return (
-    <StyledView onPress={() => console.log(id)}>
+    <StyledView
+      onPress={() => {
+        nav.navigate('user', {
+          id,
+          name,
+        });
+      }}>
       <StyledImage source={userDefault} />
       <StyledText>{name}</StyledText>
     </StyledView>

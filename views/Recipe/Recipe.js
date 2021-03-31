@@ -147,7 +147,7 @@ const DateAdded = styled(Text)`
   text-align: right;
 `;
 
-const Author = styled(View)`
+const Author = styled(TouchableOpacity)`
   flex-direction: row;
   justify-content: space-between;
   align-items: center;

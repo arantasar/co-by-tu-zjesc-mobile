@@ -5,8 +5,15 @@ import styled from 'styled-components';
 import {COLORS} from '../../../styles/variables';
 import userDefault from './../../../assets/userDefault.png';
 
-const Profile = () => {
-  const {user} = useContext(UserContext);
+const Profile = (props) => {
+  let user;
+
+  if (props.user) {
+    user = props.user;
+  } else {
+    const ctx = useContext(UserContext);
+    user = ctx.user;
+  }
 
   const dateCreated = (user && user.dateCreated) || '';
   const day = dateCreated.slice(0, 2);
