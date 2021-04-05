@@ -194,7 +194,7 @@ const AddDetails = () => {
                   resizeMode: 'contain',
                 }}
                 source={{
-                  uri: 'https://picsum.photos/300',
+                  uri: newRecipe.photoPath,
                 }}
               />
             ) : null}

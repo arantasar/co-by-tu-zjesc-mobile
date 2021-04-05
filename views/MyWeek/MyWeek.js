@@ -108,7 +108,7 @@ const MyWeek = () => {
               onPress={() => {
                 toggleExcluded(item.id);
               }}>
-              <Photo source={{uri: 'https://picsum.photos/50'}} />
+              <Photo source={{uri: item.photoPath}} />
               <Name>{item.ingredient.name}</Name>
               <Amount>
                 {item.amount} x {item.unit.name}

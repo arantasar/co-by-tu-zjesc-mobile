@@ -15,7 +15,7 @@ const Avatar = ({id, name, photoPath}) => {
           name,
         });
       }}>
-      <StyledImage source={userDefault} />
+      <StyledImage source={{uri: photoPath}} />
       <StyledText>{name}</StyledText>
     </StyledView>
   );

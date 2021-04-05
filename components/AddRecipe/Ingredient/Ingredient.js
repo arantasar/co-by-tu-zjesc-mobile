@@ -14,7 +14,7 @@ const Ingredient = ({ingredient, isSelected, amount, unit, remove}) => {
       onPress={() => nav.push('addAmount', {ingredient})}
       selected={isSelected}>
       <Content>
-        <Photo source={{uri: 'https://picsum.photos/75'}} />
+        <Photo source={{uri: ingredient.photoPath}} />
         <IngredientName>{ingredient.name}</IngredientName>
       </Content>
       <Details>

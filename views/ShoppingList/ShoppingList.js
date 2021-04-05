@@ -28,7 +28,7 @@ const Shopping = ({route}) => {
               .filter((line) => !excluded.includes(line.id))
               .map((line) => (
                 <IngredientItem key={line.id} onPress={() => exclude(line.id)}>
-                  <Photo source={{uri: 'https://picsum.photos/50'}} />
+                  <Photo source={{uri: line.ingredient.photoPath}} />
                   <Name>{line.ingredient.name}</Name>
                   <Amount>
                     {line.amount} x {line.unit.name}
@@ -44,7 +44,7 @@ const Shopping = ({route}) => {
                 <ExcludedIngredientItem
                   key={line.id}
                   onPress={() => include(line.id)}>
-                  <Photo source={{uri: 'https://picsum.photos/50'}} />
+                  <Photo source={{uri: line.ingredient.photoPath}} />
                   <Name>{line.ingredient.name}</Name>
                   <Amount>
                     {line.amount} x {line.unit.name}

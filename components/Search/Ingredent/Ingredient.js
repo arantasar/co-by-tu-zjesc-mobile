@@ -11,7 +11,7 @@ const Ingredient = ({ingredient, isSelected, toggleSelected}) => {
       }}
       selected={isSelected}>
       <Content>
-        <Photo source={{uri: 'https://picsum.photos/75'}} />
+        <Photo source={{uri: ingredient.photoPath}} />
         <IngredientName>{ingredient.name}</IngredientName>
       </Content>
     </StyledIngredient>

@@ -21,7 +21,7 @@ const RecipeCard = ({recipe, size}) => {
       <RecipeDetails>
         <StyledImage
           source={{
-            uri: 'https://picsum.photos/100',
+            uri: recipe.photoPath,
           }}
         />
         <Stats {...recipe} />

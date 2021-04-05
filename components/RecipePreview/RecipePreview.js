@@ -13,12 +13,13 @@ const RecipePreview = ({
   inFavourite,
   likes,
   viewCounter,
+  photoPath,
 }) => {
   const nav = useNavigation();
 
   return (
     <StyledRecipePreview onPress={() => nav.navigate('recipe', {name, id})}>
-      <StyledImage source={{uri: 'https://picsum.photos/200'}} />
+      <StyledImage source={{uri: photoPath}} />
       <Date date={dateAdded || ''} />
       <Author>{user && user.name}</Author>
       <StyledText>{name}</StyledText>

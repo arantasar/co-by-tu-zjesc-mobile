@@ -85,7 +85,7 @@ const Recipe = ({route}) => {
       {recipe && (
         <>
           {admin}
-          <Photo photoPath={'https://picsum.photos/300'} />
+          <Photo photoPath={recipe.photoPath} />
           <Author>
             <Avatar {...recipe.user} />
             <DateAdded>{recipe.dateAdded}</DateAdded>

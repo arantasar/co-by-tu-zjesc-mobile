@@ -30,7 +30,7 @@ const AddAmount = ({route}) => {
   return (
     <ScrollView contentContainerStyle={contentContainerStyle}>
       <PhotoWrapper>
-        <Photo source={{uri: 'https://picsum.photos/200'}} />
+        <Photo source={{uri: ingredient.photoPath}} />
       </PhotoWrapper>
       <Units>
         {ingredient.units.map((unit) => (
