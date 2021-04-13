@@ -1,1 +1,1 @@
-export const URL_BASE = 'http://cobytuzjesc.pl:5000';
+export const URL_BASE = 'http://cobytuzjesc.pl';
